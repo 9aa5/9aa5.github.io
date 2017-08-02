@@ -1,0 +1,42 @@
+<html id="html">
+<head>
+<script>
+function log(message) {
+    document.getElementById('console').innerHTML += (message + "\n");
+}
+
+function logMouseEvent(evt) {
+    var target = (evt.target)? evt.target : ev.srcElement;
+    log(evt.type + " on " + target.id);
+    evt.stopPropagation();
+}
+
+function init() {
+    var mouseTargets = document.querySelectorAll('[id]');
+    for (var i = 0; i < mouseTargets.length; ++i) {
+        var target = mouseTargets[i];
+        target.addEventListener('mouseover', logMouseEvent);
+        target.addEventListener('mouseout', logMouseEvent);
+        target.addEventListener('mousemove', logMouseEvent);
+        target.addEventListener('mouseleave', logMouseEvent);
+    }
+    document.body.addEventListener('mouseenter', logMouseEvent,true);
+    document.body.addEventListener('mouseleave', logMouseEvent,true);
+    document.body.addEventListener('mouseenter', logMouseEvent,false);
+    document.body.addEventListener('mouseleave', logMouseEvent,true);
+}
+
+</script>
+</head>
+<body id="body" onload="init()">
+<div id="outer1" style="width:100px; height:100px; background-color:blue; top:100px; left:200px; position:absolute">
+<div id="inner1" style="width:50px; height:50px; background-color:red; top:20px; left:20px; position:absolute">
+</div>
+<div id="inner2" style="width:20px; height:20px; background-color:yellow; top:30px; left:60px; position:absolute">
+<div id="inner3" style="margin:5px; width:10px; height:10px; background-color:green;">
+</div>
+</div>
+</div>
+<pre id="console"></pre>
+</body>
+</html>

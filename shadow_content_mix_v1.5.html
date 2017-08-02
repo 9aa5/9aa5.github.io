@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <button onclick='start1();'>Create And Fill Shadow</button>
+    <br>
+    <template id="template1">
+       <h4>This is fixed content inside shadow DOM</h4>
+       <content select="[slot='slot1']"></content>
+      <hr>
+    </template>
+
+    <my-shadow id='s1'>
+      <div slot="notused">Original child of the shadow host1.</div>
+      <div slot="slot1">
+         <div>Slot value provided by light DOM1.</div>
+         <div>Slot value provided by light DOM2.</div>
+      </div>
+      <div>Original child of shadow host shouldn't display.</div>
+    </my-shadow>
+    <script>
+   function start1() {
+       var template = template1.content;
+       // To make content work, we have to use v0 creation, not v1 creation
+       // of shadow root.
+       //const shadowRoot = s1.attachShadow({mode: 'open'})
+       s1.createShadowRoot().appendChild(template.cloneNode(true));
+   }
+    </script>
+  </body>
+</html>

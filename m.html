@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+   <head>
+   <script>
+      function randInt() {
+         return Math.floor((Math.random() * 5) + 5);
+      }
+      function returnStr() {
+         return String(randInt()) + ' + ' + String(randInt()) + ' = ?';
+      }
+      function returnStr2() {
+         var v1 = Math.floor((Math.random() * 10) + 10);
+         v2 = Math.floor((Math.random() * 5) + 5);
+         return String(v1) + ' - ' + v2 + ' = ?';
+      }
+      function next1() {
+         var el = document.getElementById('t1');
+         el.textContent = returnStr();
+      }
+      function next2() {
+         var el = document.getElementById('t1');
+         el.textContent = returnStr2();
+      }
+      function start_timer() {
+      }
+   </script>
+   </head>
+<body onload='start_timer();'>
+   <br> <br> <br> <br> <br>
+   <h1>
+      <span id='t1'>1 + 1 = ?</span><br>
+   </h1>
+   <br> <br> <br> <br> <br>
+   <button onclick='next1();'>t1</button>
+   <button onclick='next2();'>t2</button>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<meta http-equiv="content-type" content="application/xhtml+xml; charset=utf-8" />
+<title>Test</title>
+</head>
+<body>
+
+    <input type="button" value="click me" />
+    <input type="text" />
+
+    <script>
+    function ButtonHandler(e) {
+
+      console.log('in onclick');
+        text.focus();
+        console.log('out onclick');
+    }
+
+    function FieldHandler(e) {
+
+      console.log('onfocus');
+        //text.onfocus = null;
+    }
+
+    var button = document.body.children[0];
+      var text = document.body.children[1];
+
+      button.onclick = ButtonHandler;
+      text.onfocus = FieldHandler;
+  </script>
+</body>
+</html>

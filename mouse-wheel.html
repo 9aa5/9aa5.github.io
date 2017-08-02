@@ -1,0 +1,25 @@
+<html>
+<body>
+
+Go crazy on mouse wheel!
+
+
+<script type="text/javascript">
+var index = 0;
+
+function addContent(e) {
+   var y = e.wheelDeltaY;
+   var div = document.createElement('div');
+   div.id = index;
+   index++;
+   div.innerText = y;
+   document.body.appendChild(div);
+}
+
+document.addEventListener("mousewheel", addContent, true);
+
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,13 @@
+<html>
+<head>
+</head>
+<body onload='console.log("DOM LOADED.");'>
+</body>
+<script>
+   document.addEventListener('selectionchange', function(event) {
+      console.log('Selection changed.');
+   }, false);
+   document.execCommand('selectall');
+   console.log('SCRIPT TAG RUN.');
+</script>
+</html>

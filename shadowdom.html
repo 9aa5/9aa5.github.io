@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <script>
+      function create_shadow() {
+         var nameTag = document.getElementById('nameTag');
+         nameTag.createShadowRoot = function () {
+            console.log('createShadowRoot invoked on:' + this);
+            return HTMLElement.prototype.createShadowRoot.apply(this);
+         }
+         nameTag.attachShadow = function (init) {
+            console.log('attachShadow invoked on:' + this);
+            return HTMLElement.prototype.attachShadow.apply(this, [init]);
+         }
+         // var shadow = nameTag.createShadowRoot();
+         var shadow = nameTag.attachShadow({mode:'closed'});
+         window.shadowcopy = shadow;
+         install_mo(shadow);
+         var template = document.querySelector('#nameTagTemplate');
+         var clone = document.importNode(template.content, true);
+         shadow.appendChild(clone);
+      }
+      function install_mo(root) {
+         var observer = new MutationObserver(function(mutations) {
+            mutations.forEach(function(mutation) {
+               console.log(mutation.type);
+               console.log(mutation);
+            });    
+         });
+ 
+         // configuration of the observer:
+         var config = {
+            attributes: true,
+            childList: true,
+            characterData: true,
+            subtree: true
+         };
+         // pass in the target node, as well as the observer options
+         observer.observe(root, config);
+      }
+      function add_node() {
+         var to_append = document.getElementById('to_append');
+         var div = document.createElement('DIV');
+         div.textContent = 'new node here.';
+         to_append.appendChild(div);
+      }
+      var i = 0, name_list = ['value1', 'value2', 'value3'];
+      function random_name(target) {
+         target.textContent = name_list[i%3];
+         i += 1;
+      }
+   </script>
+</head>
+<body onload='install_mo(document.body);'>
+   <button onclick='create_shadow();'>Create Shadow</button>
+   <button onclick='add_node();'>Add a node</button>
+   <div>
+      <div onclick='random_name(this);'>random name</div>
+   <div>
+   <div id="nameTag">Original</div>
+   <template id="nameTagTemplate">
+      <style>
+      .outer {
+        background: blue;
+        font-size: 12pt;
+        width: 12em;
+        height: 7em;
+        text-align: center;
+      }
+      .boilerplate {
+        color: white;
+        font-family: sans-serif;
+        padding: 0.5em;
+      }
+      .name {
+        color: black;
+        background: white;
+        font-family: "Marker Felt", cursive;
+        font-size: 18pt;
+        padding-top: 0.2em;
+      }
+      </style>
+      <div class="outer">
+        <div class="boilerplate">
+          The value is
+        </div>
+        <div onclick='random_name(this);' class="name">
+          changed
+        </div>
+      </div>
+   </template>
+   <div id='to_append'></div>
+</body>
+</html>

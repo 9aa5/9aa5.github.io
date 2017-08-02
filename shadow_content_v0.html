@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <button onclick='start1();'>Create And Fill Shadow</button>
+    <br>
+    <my-shadow id='s1'>
+      <div>Original child of the shadow host1.</div>
+      <div>Slot value provided by light DOM1.</div>
+      <div>Slot value provided by light DOM2.</div>
+      <div>Original child of shadow host shouldn't display.</div>
+    </my-shadow>
+    <script>
+   function start1() {
+      s1.createShadowRoot().innerHTML = '<h4>This is fixed content</h4><h3><content select="*"></content></h3>';
+   }
+    </script>
+  </body>
+</html>

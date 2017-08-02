@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <script src='focustest.js' type='text/javascript'></script>
+</head>
+<body id='a0' onload='onload();'>
+   <button onclick='setSelection("div_1");'>Set selection on no editable div in 3 seconds</button>
+   <button onclick='setFocus("i1");'>Set focus on input in 3 seconds</button>
+   <div id='div_1'>This is a long div text that can get selection.</div>
+   <div>
+      <div>textarea tag:</div>
+      <textarea id='t1' style='height: 50px;width: 200px;border: solid; border-width: 1px'
+         spellcheck='false'></textarea>
+      </div>
+   </div>
+   <div>
+      <div>textarea tag with some original text:</div>
+      <textarea id='t1' style='height: 50px;width: 200px;border: solid; border-width: 1px'
+         spellcheck='false'>Original text.</textarea>
+   </div>
+   <div>
+      <div>input tag:</div>
+      <input id='i1' type='text' autocomplete='on'>
+   </div>
+   <div>
+      <div>Content editable with some original text:</div>
+      <div contenteditable='true' id='c1' spellcheck='false'
+         style='border: solid; border-width:1px; height: 60px; width: 200px;'>
+         Original text.
+      </div>
+   </div>
+   <div>
+      <div>Content editable original empty:</div>
+      <div contenteditable='true' id='c2' spellcheck='false'
+         style='border: solid; border-width: 1px; height: 60px; width: 200px;'>
+      </div>
+   </div>
+   <div>Content design mode iframe:</div>
+   <iframe src='designmode.html' width='200' height='80'>
+   </iframe>
+   <div>Content input and content-editable</div>
+   <iframe src='simpleinput2.html' width='400' height='200'>
+   </iframe>
+</body>
+</html>

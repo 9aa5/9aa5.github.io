@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<HEAD>
+<script>
+      on_button_click1 = function() {
+      var el = document.getElementById('input_1'); el.setAttribute('type', 'email');
+      el = document.getElementById('input_2');
+      el.setAttribute('type', 'password');
+   }
+</script>
+</HEAD>
+<html>
+<body>
+<form>
+<label for="usermail">Email</label>
+<input id='input_1' type="text" name="usermail" placeholder="yourname@email.com" required>
+<label for="password">Password</label>
+<input id='input_2' type="text" name="password" placeholder="password" required></li>
+</form>
+<button onclick='on_button_click1();'>click me.</button>
+<body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<script>
+   var interval_id;
+   var text_node = document.createElement('div');
+   var detached = true;
+   text_node.innerHTML='Blinking text';
+
+   function start_dom_op() {
+      var parent_node = document.getElementById('parent_div');
+      interval_id = setInterval(function() {
+         if (detached) {
+            parent_node.appendChild(text_node);
+            detached = false;
+         } else {
+            parent_node.removeChild(text_node);
+            detached = true;
+         }
+      }, 0);
+   }
+   function stop_dom_op() {
+      clearInterval(interval_id);
+   }
+</script>
+
+<body>
+<button onclick='start_dom_op();'>Start DOM Op</button>
+<button onclick='stop_dom_op();'>Stop DOM Op</button>
+<div>
+   Some text here.
+</div>
+<div id='parent_div'>
+</div>
+<div>
+   Some text there.
+</div>
+
+</body>
+</html>

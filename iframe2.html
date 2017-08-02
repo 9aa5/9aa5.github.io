@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <meta charset="UTF-8">
+   <script>
+      function add_lang() {
+         var html_elem = document.firstElementChild;
+         document.removeChild(html_elem);
+         html_elem.setAttribute('lang', 'zh-cn');
+         var style = document.createElement('style')
+         style.type = 'text/css'
+         style.innerHTML = '* { margin: 30px; padding: 30px}';
+         setTimeout(function () {
+            document.appendChild(html_elem);
+            document.getElementsByTagName('head')[0].appendChild(style);
+         }, 2000);
+      }
+   </script>
+</head>
+<body>
+   <button onclick='add_lang();'>Click to change lang</button>
+   这是中文
+</body>
+</html>

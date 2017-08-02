@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <script>
+      function create_shadow() {
+         // var nameTag = document.getElementById('nameTag');
+         var shadow = nameTag.createShadowRoot();
+      }
+      function attach_shadow() {
+         var XFoo = document.registerElement('my-elem');
+         var nameTag = document.getElementById('nameTag'); var shadow = nameTag.attachShadow({ mode: 'open' });
+      }
+      function fill_shadow(template_id) {
+         var nameTag = document.getElementById('nameTag');
+         var template = document.getElementById(template_id);
+         var clone = document.importNode(template.content, true);
+         nameTag.shadowRoot.appendChild(clone);
+         // nameTag.shadowRoot.appendChild(template.content.cloneNode(true));
+      }
+      function create_and_fill_shadow() {
+         create_shadow();
+         fill_shadow();
+      }
+      function set_style() {
+         nameTag.style.borderStyle = 'solid';
+      }
+   </script>
+</head>
+<body>
+   <button onclick='create_shadow();'>Create Shadow</button>
+   <button onclick='attach_shadow();'>Attach Shadow</button>
+   <button onclick='fill_shadow("template1");'>Fill Shadow with Template 1</button>
+   <button onclick='fill_shadow("template2");'>Fill Shadow with Template 2</button>
+   <button onclick='create_and_fill_shadow();'>Create And Fill Shadow</button>
+   <button onclick='set_style();'>Set shadow host style</button>
+   <my-elem id="nameTag">
+      <span slot='s1'>This is Light DOM content.</span>
+      <div>It is child of the shadow host.</div>
+   </my-elem>
+   <template id="template1">
+      <style>
+      .outer {
+        background: blue;
+        font-size: 12pt;
+        width: 12em;
+        height: 7em;
+        text-align: center;
+      }
+      .boilerplate {
+        color: white;
+        font-family: sans-serif;
+        padding: 0.5em;
+      }
+      .name {
+        color: black;
+        background: white;
+        font-family: "Marker Felt", cursive;
+        font-size: 18pt;
+        padding-top: 0.2em;
+      }
+      </style>
+      <div class="outer">
+        <div class="boilerplate">
+          The value is
+        </div>
+        <div onclick='random_name(this);' class="name">
+          changed
+        </div>
+      </div>
+   </template>
+   <template id="template2">
+      <div>template fixed value.</div>
+      <slot name='s1'>Slot default value.</slot>
+   </template>
+   <div id='to_append'></div>
+</body>
+</html>

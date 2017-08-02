@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<HEAD>
+<script>
+      function print_result(result) {
+         var el = document.getElementById('result');
+         // el.innerHTML += '<br><div>' + result + '</div>'
+      }
+      document.addEventListener('change', function(event) {
+         console.log('changed event:', event.target);
+         print_result('changed event:' + String(event.target));
+      }, true);
+      document.addEventListener('input', function(event) {
+         console.log('input event:', event.target);
+         print_result('input evnet:' + String(event.target));
+      }, true);
+      document.addEventListener('textInput', function(event) {
+         console.log('textInput event:', event.target);
+         print_result('textInput event:' + String(event.target));
+      }, true);
+      document.addEventListener('textinput', function(event) {
+         console.log('textinput event:', event.target);
+         print_result('textinput event:' + String(event.target));
+      }, true);
+      document.addEventListener('paste', function(event) {
+         console.log('paste event:', event.target);
+         print_result('Paste event:' + String(event.target));
+      }, true);
+   //}
+   on_button_click1 = function() {
+      window.location = 'login_result.html';
+   }
+   on_button_click2 = function() {
+      setTimeout(function() {
+         window.location = 'login_result.html';
+      }, 2000);
+   }
+   on_submit_click1 = function() {
+      window.location = 'login_result.html';
+   }
+   on_submit_click2 = function() {
+      setTimeout(function() {
+         window.location = 'login_result.html';
+      }, 4000);
+   }
+</script>
+</HEAD>
+<html>
+<body>
+   <form>
+      <label for="usermail">Email</label>
+      <!-- input type="email" name="usermail" placeholder="yourname@email.com" required --!>
+      <!-- textarea></textarea --!>
+      <!-- div id='username' contenteditable=''></div --!>
+      <input type="text" autocorrect='on' name="usermail" placeholder="yourname@email.com" required>
+      <label for="password">Password</label>
+      <input type="password" name="password" placeholder="password" required></li>
+   </form>
+   <div id='result'></div>
+   <button onclick='on_button_click1();'>click me.</button>
+   <button onclick='on_button_click2();'>click me Delayed.</button>
+<body>
+</html>

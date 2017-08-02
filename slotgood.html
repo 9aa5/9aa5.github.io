@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <button onclick='start1();'>Create And Fill Shadow</button>
+    <br>
+    <template id="template1">
+       <h4>This is fixed content inside shadow DOM</h4>
+       <slot name="slot1"><p>Fallback text, shouldn't be here.</p></slot>
+      <hr>
+    </template>
+
+    <my-shadow id='s1'>
+      <div slot="notused">Original child of the shadow host1.</div>
+      <div slot="slot1">Slot value provided by light DOM</div>
+      <div>Original child of shadow host shouldn't display.</div>
+    </my-shadow>
+    <script>
+   function start1() {
+             var template = template1.content;
+             const shadowRoot = s1.attachShadow({mode: 'open'})
+               .appendChild(template.cloneNode(true));
+   }
+    </script>
+  </body>
+</html>

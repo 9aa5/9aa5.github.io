@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <script>
+      function move_dom() {
+         var d0 = document.getElementById('d0');
+         var if0 = document.getElementById('if0');
+         if0.contentWindow.document.body.appendChild(d0);
+      }
+      function move_dom2() {
+         var d0 = document.getElementById('d0');
+         var if0 = document.getElementById('if0');
+         var d0_copy = if0.contentWindow.document.importNode(d0, true);
+         var cssObj = window.getComputedStyle(d0);
+         for (var i = 0; i < cssObj.length; i++) {
+            var cssObjProp = cssObj.item(i);
+            d0_copy.style[cssObjProp] = cssObj.getPropertyValue(cssObjProp);
+            console.log(cssObjProp + " = " + cssObj.getPropertyValue(cssObjProp));
+         }
+         if0.contentWindow.document.body.appendChild(d0_copy);
+      }
+   </script>
+   <style>
+      #d0 {
+         color: blue;
+      }
+   </style>
+</head>
+<body>
+   <button onclick='move_dom();'>Move DOM</button>
+   <button onclick='move_dom2();'>Move DOM2</button>
+   <div id='d0'>Original</div>
+   <iframe id='if0'></iframe>
+</body>
+</html>

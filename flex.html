@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<!-- comment 1 -->
+<html class='no-js'>
+<script src="modernizr-min.js"></script>
+<body>
+   <!-- comment 2 -->
+   <div id='div1' style='flex-wrap:wrap'>Hello</div>
+</body>
+<script>
+   function getFlex() {
+      var divElem = document.getElementById('div1');
+      console.log('Property is:', divElem.style.webkitFlexWrap);
+      console.log('Property is:', divElem.style.flexWrap);
+      console.log('Property is:', divElem.style.msFlexWrap);
+   }
+</script>
+</html>

@@ -1,0 +1,33 @@
+<html>
+<head>
+   <script>
+      var start_value = 0;
+      function insertText() {
+         console.log('insert now.');
+         document.execCommand('insertText', true, 'text_' + start_value);
+         start_value++;
+      }
+      function delayedInsert() {
+         console.log('insert in 5 seconds.');
+         setTimeout(function() { insertText(); }, 5000);
+      }
+      function injectTextInput() {
+         var event;
+         event = document.createEvent('TextEvent');
+         event.initTextEvent('textInput', true, true, document.defaultView, 'text_' + start_value);
+         var node = document.getElementById('div1');
+         node.dispatchEvent(event);
+      }
+
+   </script>
+</head>
+<body onload='delayedInsert();'>
+   <button onclick='insertText();'>Exec Command</button>
+   <button onclick='injectTextInput();'>Text Input Event</button>
+   <button onclick='setTimeout(function() { injectTextInput();}, 5000);'>Delayed Text Input Event</button>
+   <input type="text">
+   <div id='div1' contentEditable='true'>
+      some text here.
+   <div>
+</body>
+</html>

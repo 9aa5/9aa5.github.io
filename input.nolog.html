@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <meta charset="utf-8">
+   <title>Input test case</title>
+   <style type='text/css'>
+      .leftcol {width: 300px; border: 1px solid red; float: left}
+      .rightcol {width: 300px; border: 1px solid red; float: right; font-size: x-small}
+      .areasize {height:50px;width:200px;border:1px solid}
+   </style>
+   <style>
+      .input-with-label {
+          width: 100px;
+          height: 100px;
+          position: relative;
+      }
+      .top-div, 
+      .button-div {
+          width: 100%;
+          height: 100%;
+          position: absolute;
+          top: 0;
+          left: 0;
+      }
+   </style>
+
+</head>
+<body id='a0'>
+   <div class='leftcol'>
+      The following is a textarea:<br>
+      <textarea id='a1' class='areasize' spellcheck='true'></textarea>
+      <div>free form text input:</div><input id='a2' type='text' autocomplete='on'>
+      <div>Number:</div><input id='n1' type='number'><br>
+      <div>Tel: </div><input id='tel1' type='tel'><br>
+      <div>Email: </div><input id='email1' type='email'><br>
+      <input id='p1' type='password' autocomplete='on'>
+      <br/>
+      <div>Manipulated input field:</div><input id='a3' type='text' size='6'>
+      <br/>
+      <div>Content editable:</div><br/>
+      <div contenteditable='true' id='ce1'>Hello world</div>
+      <br/>
+      <select id="select_menu">
+        <option id='op1'>foo</option>
+        <option id='op2' selected=false>bar</option>
+        <option id='op3'>else</option>
+      </select><br/>
+      <input id='r1' type='radio' value='radio 1 value' name='rg1' checked>
+      <label for='r1'>First Choice</label>
+      <input id='r2' type='radio' value='radio 2 value' name='rg1' checked=''>
+      <label for='r2'>Second Choice</label>
+      <input id='r3' type='radio' value='radio 3 value' name='rg3' checked=false>
+      <label for='r3'>Third Choice</label>
+      <input id='r4' type='radio' value='radio 4 value' name='rg4' checked='false'>
+      <label for='r4'>Fourth Choice</label>
+      <div class='input-with-label'>
+         <label class='top-div' for='the-input'>This is label.</label>
+         <input id='the-input' class='buttom-div' type='text'></input>
+      </div>
+      <br/>
+      <a id='link-focus' href='#'><span>This is a link</span></a>
+      <div id='parent-div' style='border-style: solid; border-width:5px;'> This is parent div.
+         <div id='child-div' style='border-style: solid; border-width:1px'> This is child div.</div>
+      <br/>
+      </div>
+      <label><input type="text"><span>foo</span></label>
+      <input type="checkbox" id='stopprop'>Stop Propogation<br>
+      <input type="checkbox" id='preventdefault'>Prevent Default For All<br>
+      <input type="checkbox" id='preventdefault_keypress'>Prevent Default For Key press<br>
+      <input type="checkbox" id='showevents' name='showevents' checked='checked'>Show Events<br>
+
+      <input type="checkbox" id='usecapture' name='usecapture' onclick='changeEventStage();'>Use Capture Phase<br>
+      <button type='button' onclick='gettext();'>See text</button>
+      <button type='button' onclick='clearlog();'>Clear log</button>
+      <button type='button' onclick='setTextString();'>Start interference</button>
+      <button type='button' onclick='placeCaretPos();'>Set Care Pos</button>
+      <button type='button' onclick='clearSelection();'>Clear Selection</button>
+      <button type='button' onclick='injectText();'>InjectText</button>
+      <div id='a1_result'></div>
+      <div id='a2_result'></div>
+   </div>
+</body>
+</html>

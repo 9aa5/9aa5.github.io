@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+   <body>
+      <button onclick='create_and_fill_shadow();'>Create And Fill Shadow</button>
+      <br>
+      <template id="t1">
+         <h4>This is fixed content inside shadow DOM</h4>
+         <slot name="slot1"><p>Fallback text, shouldn't be here.</p></slot>
+      </template>
+      <my-elem id="s1">
+         <div slot='slot1'>This is Light DOM content.</div>
+         <div>It is child of the shadow host.</div>
+      </my-elem>
+      <script>
+         function fill_shadow() {
+         }
+         function create_and_fill_shadow() {
+            s1.createShadowRoot();
+            s1.shadowRoot.appendChild(t1.content.cloneNode(true));
+         }
+      </script>
+   </body>
+</html>

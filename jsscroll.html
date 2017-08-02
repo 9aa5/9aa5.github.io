@@ -1,0 +1,22 @@
+<html>
+<head>
+   <script>
+      function init() {
+         var lines = 100, node;
+         for (i = 0; i < lines; i ++) {
+            node = document.createElement('div');
+            node.innerText = 'line' + i;
+            document.body.appendChild(node);
+         }
+         window.addEventListener('mousewheel', function(event) {
+            var delta = event.deltaY;
+            event.preventDefault();
+            window.scrollBy(0, delta / 10);
+         }, true);
+      }
+   </script>
+</head>
+<body onload='init();'>
+</body>
+</html>
+

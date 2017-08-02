@@ -1,0 +1,44 @@
+<!-- Learn about this code on MDN: https://developer.mozilla.org/en-US/docs/Web/HTML/Element/slot -->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>slot example</title>
+    <style>
+
+      dl { margin-left: 6px; }
+      dt { font-weight: bold; color: #217ac0; font-size: 110% }
+      dt { font-family: Consolas, "Liberation Mono", Courier }
+      dd { margin-left: 16px }
+
+    </style>
+  </head>
+  <body onload='start2();'>
+    <template id="template1">
+       <h4>This is fixed content inside shadow DOM</h4>
+       <slot name="attributes"><p>Fallback text, shouldn't be here.</p></slot>
+      <hr>
+    </template>
+
+    <my-shadow id='s1'>
+      <span slot="notused">A placeholder inside a web.</span>
+      <dl slot="attributes">
+        <dt>Provided by shadow host</dt>
+        <dt>Which is a consumer</dt>
+      </dl>
+    </my-shadow>
+    <script>
+   function start() {
+             var template = template1.content;
+             const shadowRoot = s1.attachShadow({mode: 'open'})
+               .appendChild(template.cloneNode(true));
+   }
+   function start2() {
+      var template = document.getElementById('template1').content;
+      var shadow_host = document.getElementById('s1');
+      var shadow_root = shadow_host.attachShadow({mode: 'open'});
+      shadow_root.appendChild(template.cloneNode(true));
+   }
+    </script>
+  </body>
+</html>

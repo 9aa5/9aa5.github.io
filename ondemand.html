@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+   <button onclick='additem();'>Click To Add Item</button>
+   <section>
+      <div>
+         <article>
+            <ul id='list1'>
+            </ul>
+         </article>
+      </div>
+   </section>
+</body>
+<script>
+   function additem() {
+      var ul_el = document.getElementById('list1');
+      var li_el = document.createElement('li');
+      li_el.innerHTML = 'this is a list item';
+      ul_el.appendChild(li_el);
+   }
+   setInterval(function() {additem();}, 500);
+</script>
+</html>

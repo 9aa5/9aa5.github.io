@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <script>
+      var click_count = 0
+      function on_click() {
+         click_count ++;
+         var el = document.getElementById('input_1');
+         if (click_count % 3 == 0) {
+            el.setAttribute('type', 'text');
+         } else if (click_count % 3 == 1) {
+            el.setAttribute('type', 'password');
+         } else if (click_count % 3 == 2) {
+            el.setAttribute('type', 'email');
+         }
+      }
+   </script>
+</head>
+<body>
+   <input type='text' id='input_1'>
+   <button onclick='on_click();'>Change type</input>
+</body>
+</html>

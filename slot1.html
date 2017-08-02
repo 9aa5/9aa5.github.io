@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<div>
+  <p>I'm outside the element (big/white)</p>
+  <my-element><div slot="s1">Light DOM content is also affected.<div>what?</div></div></my-element>
+  <p>I'm outside the element (big/white)</p>
+</div>
+
+<script>
+const el = document.querySelector('my-element');
+el.attachShadow({mode: 'open'}).innerHTML = '<div>This is fixed</div> <slot name="s1"></slot>';
+</script>
+</body>
+</html>

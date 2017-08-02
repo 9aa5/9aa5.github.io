@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<script>
+   var iframe_node;
+   var inner_node;
+   function fill_iframe() {
+      iframe_node = document.getElementById('iframe1');
+      iframe_node.contentWindow.document.write("<html><head></head><body>" +
+         "<div id='inner1'>This is additional help that was built dynamically " +
+         "on the fly</div></body></html>");
+      inner_node = iframe_node.contentWindow.document.getElementById('inner1');
+   }
+   function remove_iframe() {
+      iframe_node.parentNode.removeChild(iframe_node);
+   }
+   function remove_iframe_then_node() {
+      var inner_node = iframe_node.contentWindow.document.getElementById('inner1');
+      iframe_node.parentNode.removeChild(iframe_node);
+      setTimeout(function() {
+         inner_node.parentNode.removeChild(inner_node);
+      }, 0);
+   }
+   function remove_inner_node() {
+      inner_node.parentNode.removeChild(inner_node);
+   }
+   function move_iframe() {
+      var old_parent = document.getElementById('parent1');
+      var new_parent = document.getElementById('parent2');
+      // new_parent.appendChild(iframe_node);
+      old_parent.appendChild(iframe_node);
+      // iframe_node.contentWindow.document.write("<html><head></head><body>" +
+         // "<div id='inner1'>This is additional help that was built dynamically " +
+         // "on the fly</div></body></html>");
+   }
+   function remove_iframe_3() {
+      var iframe_node_3 = document.getElementById('iframe3');
+      iframe_node_3.parentNode.removeChild(iframe_node_3);
+   }
+</script>
+
+<body>
+
+<button onclick='fill_iframe();'>fill iframe</button><br>
+<button onclick='remove_iframe();'>remove iframe</button><br>
+<button onclick='move_iframe();'>move iframe</button><br>
+<button onclick='remove_inner_node();'>remove inner node</button><br>
+<button onclick='remove_iframe_then_node();'>remove iframe then inner node</button><br>
+<button onclick='remove_iframe_3();'>remove iframe 3</button><br>
+<div id='g1'>
+   <div id='parent1'>
+   DIV 1<br>
+      <iframe id='iframe1' src='about:blank'>
+      <p>Your browser does not support iframes.</p>
+   </iframe>
+</div>
+<div id='parent2'>
+DIV 2<br>
+</div>
+<div id='parent3'>
+DIV 3<br>
+   <iframe id='iframe3' src='node_auto_remove.html'>
+     <p>Your browser does not support iframes.</p>
+   </iframe>
+</div>
+
+</body>
+</html>
